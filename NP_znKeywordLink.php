@@ -47,7 +47,7 @@ class NP_znKeywordLink extends NucleusPlugin {
 	}
 	function init()              {
 		// include language file for this plugin
-		$language = ereg_replace( '[\\|/]', '', getLanguageName());
+		$language = str_replace( array('/','\\'), '', getLanguageName());
 		$incFile  = (file_exists($this->getDirectory().$language.'.php')) ? $language : 'english';
 		include_once($this->getDirectory().$incFile.'.php');
 		$this->language = $incFile;
