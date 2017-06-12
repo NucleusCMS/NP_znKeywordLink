@@ -23,14 +23,14 @@
 class NP_znKeywordLink extends NucleusPlugin {
 	function getName()           { return 'znKeywordLink'; }
 	function getAuthor()         { return ''._ZNKLINK1.''; }
-	function getURL()            { return 'http://wa.otesei.com/'; }
+	function getURL()            { return 'https://github.com/NucleusCMS/NP_znKeywordLink'; }
 	function supportsFeature($w) { return ($w == 'SqlTablePrefix') ? 1 : 0; }
 	function getTableList()      { return array( sql_table('plug_znKeywordLink'), sql_table( 'plug_znKeywordLink_item') ); }
 	function getDescription()    { return ''._ZNKLINK2.''; }
 	function getVersion()        {
 		if (!$this->checkPluginOption('verCheck'))
 			$this->createOption('verCheck', ''._ZNKLINK3.'', 'yesno', 'no'); //version check //vc
-		return '0.30';
+		return '0.4';
 	}
 	function getEventList()      {
 		return array(
