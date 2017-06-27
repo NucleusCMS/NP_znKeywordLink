@@ -247,7 +247,7 @@ class NP_znKeywordLink extends NucleusPlugin {
 		if ($this->lmode == 2) unset($this->search_f);
 		//echo "[".$this->lmode."]";
 		
-		if (!$this->search) $this->array_set();
+		if (!isset($this->search) || !$this->search) $this->array_set();
 		if(_CHARSET != 'UTF-8'){
 			$temp = mb_convert_encoding($data['item']->body, 'UTF-8', _CHARSET);
 			$temp = $this->addKeywordLink($this->search, $this->replace, $temp);
@@ -285,7 +285,7 @@ class NP_znKeywordLink extends NucleusPlugin {
 					}
 					$result .= $matches[2][$i];
 				} else {                                                  //
-					if ($this->search_f[$search] <> 1 or $this->lmode <> 2){
+					if (!isset($this->search_f[$search]) || ($this->search_f[$search] <> 1 or $this->lmode <> 2)){
 						$result .= @preg_replace( $search, $replace, $matches[2][$i], (($this->lmode == 2) ? 1 : -1) ); // or 
 						$this->search_f[$search] = @preg_match($search, $matches[2][$i]); //0 or 1
 					} else $result .= $matches[2][$i];                      //
